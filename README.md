@@ -1,4 +1,5 @@
-=== Tasks ===
+Tasks
+=====
 
 	var tasks = new Tasks();
 
