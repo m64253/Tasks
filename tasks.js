@@ -1,4 +1,4 @@
-var Tasks = (function(win){
+(function(global){
 	
 	function Tasks() {
 		if (!(this instanceof Tasks)) {
@@ -110,6 +110,6 @@ var Tasks = (function(win){
 		}
 	};
 	
-	return Tasks;
+	global.Tasks = Tasks;
 	
 }(this));
