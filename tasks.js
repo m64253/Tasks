@@ -1,5 +1,21 @@
 (function(global){
 	
+	var indexOf = function indexOf(arr, val) {
+			var i, len;
+			
+			if (arr.indexOf) {
+				return arr.indexOf(val);
+			}
+			
+			for (i = 0, len = arr.length; i < len; i++) {
+				if (arr[i] === val) {
+					return i;
+				}
+			}
+			
+			return -1;
+		};
+	
 	function Tasks() {
 		if (!(this instanceof Tasks)) {
 			return new Tasks();
@@ -29,8 +45,7 @@
 			var self = this,
 				done = function done() {
 					var args = Array.prototype.slice.call(arguments),
-						// TODO: Add a fix for legacy IE's missing array.indexOf
-						i = self._tasks.indexOf(fn); 
+						i = indexOf(self._tasks, fn); 
 						
 					self._tasks.splice(i, 1);
 					
@@ -80,8 +95,7 @@
 			
 			if (this._listeners.hasOwnProperty(name)) {
 				if (fn) {
-					// TODO: Add a fix for legacy IE's missing array.indexOf
-					i = this._listeners[name].indexOf(fn);
+					i = indexOf(this._listeners[name], fn);
 					if (i !== -1) {
 						this._listeners[name].splice(i, 1);
 					}
